@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple OCR with Flask</title>
+    <link rel="icon" href="data:image/jpeg;base64,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">
+</head>
+<body>
+    <center>
+    <h1>Simple OCR with Flask</h1>
+
+    <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+        <button type="submit">Upload and OCR</button>
+    </form>
+    
+    <div id="result">
+        <!-- OCR results will be displayed here -->
+    </div>
+    </center>
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var form = event.target;
+            var formData = new FormData(form);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerHTML = '<pre>' + data.text + '</pre>';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = '<pre>Error: ' + error.message + '</pre>';
+            });
+        });
+    </script>
+</body>
+</html>

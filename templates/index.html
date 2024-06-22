@@ -8,11 +8,16 @@
 </head>
 <body>
     <center>
-    <h1>Simple OCR with Flask</h1>
+    <h1 style="font-family:verdana;text-align:center;">Simple OCR with Flask</h1>
+    <p style="font-size:160%;text-align:center;color:blue;">Convert Image To Text</p>
 
     <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
         <input type="file" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+        <br>
+        <br>
+        <br>
         <button type="submit">Upload and OCR</button>
+        <hr>
     </form>
     
     <div id="result">
